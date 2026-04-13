@@ -4,13 +4,17 @@ from enum import Enum
 
 app =FastAPI()
 """
-Tags are used to structure the category By Adding a title
+Summary is small peice of text 
+While Desciption is a more defined context
 """
+# Response is added in the respose of the code
 
-
-@app.get('/blogs/{id}',status_code=status.HTTP_200_OK,tags=['Tag Of Sever Status']) #Tag
+@app.get('/blogs/{id}',status_code=status.HTTP_200_OK,tags=['Tag Of Sever Status'],summary='This is Server Code Check',response_description="This is the response the code is working as Expected")
 
 def check(id:int, response:Response):
+    """This is the summary
+    - **id** mandotry path parameter
+    """
     if id>5 :
         response.status_code=status.HTTP_404_NOT_FOUND
         return{'error' : f'The {id} is less than5'}
